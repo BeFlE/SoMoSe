@@ -6,7 +6,7 @@ https://developer-blog.net/raspberry-pi-i2c-aktivieren/
 The SoMoSe is then connected to the Pi as shown in the picture. 
 A test of the function can be done with
 `sudo i2cdetect -y 1`
-can be done
+can be done.
 
 ![wiring](SoMoSe_Raspi_Wiring.png?raw=true "wiring")
 
