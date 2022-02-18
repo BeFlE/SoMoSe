@@ -56,28 +56,31 @@ def FactoryReset(DEVICE_ADDR):
 def main():
 
 	DEVICE_ADDR = 0x55
+	
+	#the following out-commented functions are only for illustration and have to be executed only if a value is to be changed
 
-	print ("reference- wet =", ReadReferenceWet(DEVICE_ADDR))
-	print ("reference- dry =", ReadReferenceDry(DEVICE_ADDR))
+	#print ("reference- wet =", ReadReferenceWet(DEVICE_ADDR))
+	#print ("reference- dry =", ReadReferenceDry(DEVICE_ADDR))
 
-	WriteReferenceWet(DEVICE_ADDR,5000)
-	WriteReferenceDry(DEVICE_ADDR,100)
+	#WriteReferenceWet(DEVICE_ADDR,5000)
+	#WriteReferenceDry(DEVICE_ADDR,100)
 
-	print ("new reference- wet =", ReadReferenceWet(DEVICE_ADDR))
-	print ("new reference- dry =", ReadReferenceDry(DEVICE_ADDR))
-	print ("")
-	time.sleep(1)
+	#print ("new reference- wet =", ReadReferenceWet(DEVICE_ADDR))
+	#print ("new reference- dry =", ReadReferenceDry(DEVICE_ADDR))
+	#print ("")
+	#time.sleep(1)
 
-	DEVICE_ADDR=WriteNewAddress(DEVICE_ADDR,0x60)
-	print ("device- adress changed to:",DEVICE_ADDR)
-	print ("")
-	time.sleep(1)
+	#DEVICE_ADDR=WriteNewAddress(DEVICE_ADDR,0x60)
+	#print ("device- adress changed to:",DEVICE_ADDR)
+	#print ("")
+	#time.sleep(1)
 
-	DEVICE_ADDR= FactoryReset(DEVICE_ADDR)
-	print ("reset to factory values")
-	print ("device- adress:",DEVICE_ADDR)
-	print ("")
-	time.sleep(2)
+	#DEVICE_ADDR= FactoryReset(DEVICE_ADDR)
+	#print ("reset to factory values")
+	#print ("device- adress:",DEVICE_ADDR)
+	#print ("")
+	
+	time.sleep(2)#wait for SoMoSe to start
 
 	while(True):
 		Temp = ReadTemperature(DEVICE_ADDR)
