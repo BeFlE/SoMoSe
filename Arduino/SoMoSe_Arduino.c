@@ -73,6 +73,25 @@ int getSensorValue(int Adr)
 	return value;
 }
 
+
+char getTemperatureValue(int Adr)
+{
+	signed char value;
+
+	Wire.beginTransmission(byte(Adr));
+	Wire.write(byte(0x74));
+	Wire.endTransmission();
+
+	delay(1);
+
+	Wire.requestFrom(byte(Adr), 1);    	// request 1 byte from slave device 
+	if (1 <= Wire.available())
+	{
+    	value = Wire.read();
+	}
+	return value;
+}
+
 int getReferenceDry(int Adr)
 {
 	int value;
