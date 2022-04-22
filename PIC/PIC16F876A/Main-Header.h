@@ -15,9 +15,6 @@
 
 void Init(void);
 void SoMoSe(void);
-void LEDDriver(void);
-void CheckLedDriver(void);
-void DisplayLedDriver(void);
 
 void InitI2C(void);
 bool startI2C(void);
