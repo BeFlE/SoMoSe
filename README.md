@@ -1,7 +1,5 @@
 # SoMoSe
 
-datasheet
-
 ![Datasheet](/Docs/Datenblatt_SoMoSe_v2.2_neu_1_EN.jpg?raw=true "Datasheet")
 ![Datasheet](/Docs/Datenblatt_SoMoSe_v2.2_neu_2_EN_OL.jpg?raw=true "Datasheet")
 ![Datasheet](/Docs/Datenblatt_SoMoSe_v2.2_neu_3_EN.jpg?raw=true "Datasheet")
