@@ -44,14 +44,14 @@ def WriteNewAddress(DEVICE_ADDR,NewAddress):
     return (NewAddress)
 
 def WriteReferenceDry(DEVICE_ADDR,NewValue):
-    bus.write_word_data(DEVICE_ADDR,setReferenceDry,NewValue)
-    time.sleep(0.2)
-    return (NewValue)
+	bus.write_i2c_block_data(DEVICE_ADDR,setReferenceDry, [NewValue & 0xFF, (NewValue >> 8) & 0xFF])
+	time.sleep(0.2)
+	return (NewValue)
 
 def WriteReferenceWet(DEVICE_ADDR,NewValue):
-    bus.write_word_data(DEVICE_ADDR,setReferenceWet,NewValue)
-    time.sleep(0.2)
-    return (NewValue)
+	bus.write_i2c_block_data(DEVICE_ADDR,setReferenceWet, [NewValue & 0xFF, (NewValue >> 8) & 0xFF])
+	time.sleep(0.2)
+	return (NewValue)
 
 def FactoryReset(DEVICE_ADDR):
     bus.write_byte(DEVICE_ADDR,0x46)
