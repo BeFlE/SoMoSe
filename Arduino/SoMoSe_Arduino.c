@@ -18,7 +18,7 @@ void setNewI2CAdr(int oldAdr, int newAdr)
 void setReferenceDry(int Adr,int newValue)
 {
 	Wire.beginTransmission(byte(Adr)); 		// transmit to device
-	Wire.write(byte(0x55));      			// command 
+	Wire.write(byte(0x44));      			// command 
   	Wire.write(byte(newValue & 0xFF));   		// new Value, lower Byte
 	Wire.write(byte((newValue & 0xFF00) >> 8));   	// new Value, higher Byte
 	Wire.endTransmission();      			// stop transmitting
@@ -27,7 +27,7 @@ void setReferenceDry(int Adr,int newValue)
 void setReferenceWet(int Adr,int newValue)
 {
 	Wire.beginTransmission(byte(Adr)); 		// transmit to device
-	Wire.write(byte(0x44));      			// command 
+	Wire.write(byte(0x55));      			// command 
   	Wire.write(byte(newValue & 0xFF));   		// new Value, lower Byte
 	Wire.write(byte((newValue & 0xFF00) >> 8));   	// new Value, higher Byte
 	Wire.endTransmission();      			// stop transmitting
