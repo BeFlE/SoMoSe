@@ -11,7 +11,7 @@ void setNewI2CAdr(int oldAdr, int newAdr)
 {
 	Wire.beginTransmission(byte(oldAdr)); 	// transmit to device
 	Wire.write(byte(0x41));      		// command change address 
-  	Wire.write(byte(newAdr & 0xFE));   	// new address, 7-bit
+  	Wire.write(byte((newAdr << 1) & 0xFE)); // new address, 7-bit
 	Wire.endTransmission();      		// stop transmitting
 }
 
