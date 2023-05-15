@@ -18,17 +18,22 @@ getReferenceWet = 0x75
 
 getTemperature = 0x74
 getSoilMoisture = 0x76
+getRawData = 0x72
 
 DEVICE_BUS = 1
 bus = smbus.SMBus(DEVICE_BUS)
 
 def ReadSoilMoisture(DEVICE_ADDR):
-    SM = bus.read_i2c_block_data(DEVICE_ADDR,getSoilMoisture,2)
-    return (SM)
+	SM = bus.read_i2c_block_data(DEVICE_ADDR,getSoilMoisture,2)
+	return (SM)
 
 def ReadTemperature(DEVICE_ADDR):
-    T = bus.read_byte_data(DEVICE_ADDR,getTemperature)
-    return (T)
+	T = bus.read_byte_data(DEVICE_ADDR,getTemperature)
+	return (T)
+
+def ReadRawData(DEVICE_ADDR):
+	RD = bus.read_i2c_block_data(DEVICE_ADDR,getRawData,2)
+	return (int.from_bytes(RD,byteorder='big'))
 
 def ReadReferenceDry(DEVICE_ADDR):
     RD = bus.read_i2c_block_data(DEVICE_ADDR,getReferenceDry,2)
