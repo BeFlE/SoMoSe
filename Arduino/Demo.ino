@@ -15,7 +15,7 @@ int getAveragedSensorValue(int Adr)
 
   delay(1);                   // maybe some delay is required
 
-  Wire.requestFrom(byte(Adr), 2);     // request 2 bytes from slave device 
+  Wire.requestFrom(byte(Adr), (byte)2);     // request 2 bytes from slave device 
   if (2 <= Wire.available())    // if two bytes were received
   { 
       value = Wire.read();    
