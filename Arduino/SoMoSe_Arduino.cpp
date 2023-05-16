@@ -44,7 +44,7 @@ int getAveragedSensorValue(int Adr)
 
 	delay(1);                   // maybe some delay is required
 
-	Wire.requestFrom(byte(Adr), 2);    	// request 2 bytes from slave device 
+	Wire.requestFrom(byte(Adr), (byte)2);    	// request 2 bytes from slave device 
 	if (2 <= Wire.available()) 		// if two bytes were received
 	{ 
    		value = Wire.read();  	
@@ -64,7 +64,7 @@ int getSensorValue(int Adr)
 
 	delay(1);                   // maybe some delay is required
 
-	Wire.requestFrom(byte(Adr), 2);    	// request 2 bytes from slave device 
+	Wire.requestFrom(byte(Adr), (byte)2);    	// request 2 bytes from slave device 
 	if (2 <= Wire.available()) 		// if two bytes were received
 	{ 
    		dump = Wire.read();  	
@@ -84,7 +84,7 @@ char getTemperatureValue(int Adr)
 
 	delay(1);
 
-	Wire.requestFrom(byte(Adr), 1);    	// request 1 byte from slave device 
+	Wire.requestFrom(byte(Adr), (byte)1);    	// request 1 byte from slave device 
 	if (1 <= Wire.available())
 	{
     	value = Wire.read();
@@ -102,7 +102,7 @@ int getReferenceDry(int Adr)
 
 	delay(1);                   // maybe some delay is required
 
-	Wire.requestFrom(byte(Adr), 2);    	// request 2 bytes from slave device 
+	Wire.requestFrom(byte(Adr), (byte)2);    	// request 2 bytes from slave device 
 	if (2 <= Wire.available()) 		// if two bytes were received
 	{ 
    		value = Wire.read(); 
@@ -123,7 +123,7 @@ int getReferenceWet(int Adr)
 
 	delay(1);                   // maybe some delay is required
 
-	Wire.requestFrom(byte(Adr), 2);    	// request 2 bytes from slave device 
+	Wire.requestFrom(byte(Adr), (byte)2);    	// request 2 bytes from slave device 
 	if (2 <= Wire.available()) 		// if two bytes were received
 	{ 
    		value = Wire.read(); 
