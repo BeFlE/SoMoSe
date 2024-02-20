@@ -3,5 +3,6 @@
 Zum flashen der binary-datei befolgen Sie die Anleitung: <link>SoMoSe/SoMoSe-MQTT-ESP32_Firmware
 /Anleitung zum Flashen eines ESP32 mit dem Flash Download Tool von Espressif.pdf</link>
 
-Anschließend folgen Sie den Anweisungen der Bedienungsanleitung: <link>SoMoSe/SoMoSe-MQTT-ESP32_Firmware
-/Bedienungsanleitung_SoMoSe-MQTT.pdf</link>
+[Anleitung zum Flashen eines ESP32 mit dem Flash Download Tool von Espressif.pdf](https://github.com/BeFlE/SoMoSe/blob/main/SoMoSe-MQTT-ESP32_Firmware/Anleitung%20zum%20Flashen%20eines%20ESP32%20mit%20dem%20Flash%20Download%20Tool%20von%20Espressif.pdf)
+
+Anschließend folgen Sie den Anweisungen der Bedienungsanleitung: [Bedienungsanleitung_SoMoSe-MQTT.pdf](https://github.com/BeFlE/SoMoSe/blob/main/SoMoSe-MQTT-ESP32_Firmware/Bedienungsanleitung_SoMoSe-MQTT.pdf)
