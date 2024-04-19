@@ -1,0 +1,4 @@
+Version 0.16: -Release
+
+Version 0.17: -Fixed error in diagram on "Home"-tab
+              -"Was ist neu?" - Button added
