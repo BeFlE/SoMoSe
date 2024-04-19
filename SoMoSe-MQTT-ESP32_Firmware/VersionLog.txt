@@ -2,3 +2,10 @@ Version 0.16: -Release
 
 Version 0.17: -Fixed error in diagram on "Home"-tab
               -"Was ist neu?" - Button added
+
+
+Planned:  -Simple mechanism for direct watering via GPIO pins of the ESP
+          -Sleep mode to save energy, measurement and visualization of the battery voltage and the solar panel voltage, if connected
+
+
+Further ideas and suggestions for improvement are welcome ;)
