@@ -1,7 +1,16 @@
-Version 0.16: -Release
+ESP32- Firmware:
 
-Version 0.17: -Fixed error in diagram on "Home"-tab
-              -"Was ist neu?" - Button added
+      Version 0.16: -Release
+
+      Version 0.17: -Fixed error in diagram on "Home"-tab
+                    -"Was ist neu?" - Button added
+
+SoMoSe v3- Firmware:
+
+      Version 1.3:  -Release
+
+      Version 1.4:  -Current consumption in LowPower mode improved (800uA(v1.3) -> 16uA(v1.4) in standby)
+
 
 
 Planned:  -Simple mechanism for direct watering via GPIO pins of the ESP
