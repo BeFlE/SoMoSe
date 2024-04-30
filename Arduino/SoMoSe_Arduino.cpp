@@ -132,3 +132,85 @@ int getReferenceWet(int Adr)
 	}
 	return value;
 }
+
+//only for Somose versions > v3.4 (HW version)
+
+float SoMoSe_readHwVersion(uint8_t Adr)
+{
+    Wire.beginTransmission(byte(Adr));  
+    Wire.write('h');         
+    if(Wire.endTransmission())         
+    {
+        return 0;
+    }
+    delay(1);                   // maybe some delay is required
+    Wire.requestFrom(byte(Adr), (byte) 4);     
+    if (4 <= Wire.available())    
+    { 
+        if(Wire.read() != 'v') //Compatibility with SoMoSe v2.2
+            return 2.2;
+        uint8_t Major = Wire.read() - 0x30;
+        if(Wire.read() != '.') //Compatibility with SoMoSe v2.2
+            return 2.2;
+        uint8_t Minor = Wire.read() - 0x30;   
+        return (float)(Major+(float)Minor/10);
+    }
+    return 0;
+}
+float SoMoSe_readFwVersion(uint8_t Adr)
+{
+    Wire.beginTransmission(byte(Adr));  
+    Wire.write('f');         
+    if(Wire.endTransmission())         
+    {
+        return 0;
+    }
+    delay(1);                   // maybe some delay is required
+    Wire.requestFrom(byte(Adr), (byte) 4);     
+    if (4 <= Wire.available())    
+    { 
+        if(Wire.read() != 'v') 
+            return 1.2;
+        uint8_t Major = Wire.read() - 0x30;
+        if(Wire.read() != '.')
+            return 1.2;
+        uint8_t Minor = Wire.read() - 0x30;   
+        return (float)(Major+(float)Minor/10);
+    }
+    return 0;
+}
+bool SoMoSe_readLowPowerMode(uint8_t Adr)
+{
+  Wire.beginTransmission(byte(Adr));  
+  Wire.write('o');         
+  if(Wire.endTransmission())         
+    {
+        return 0;
+    }
+  delay(1);                   // maybe some delay is required
+  Wire.requestFrom(byte(Adr), (byte) 1);     
+  if (1 <= Wire.available())    
+  { 
+      if(Wire.read() & 0x02)     
+        return 1;
+      else 
+        return 0;
+  }
+  return 0;
+}
+void SoMoSe_setLowPowerMode(int Adr, bool turnOn)
+{
+	Wire.beginTransmission(byte(Adr)); 	
+	Wire.write('L');      		 
+    Wire.write(byte(turnOn)); 
+	Wire.endTransmission();      		
+    delay(25);
+}
+void SoMoSe_startMeassurment(int Adr, int Repetitions)
+{
+	Wire.beginTransmission(byte(Adr)); 	
+	Wire.write('M');      		 
+    	Wire.write(byte(Repetitions)); 
+	Wire.endTransmission();      		
+}
+
