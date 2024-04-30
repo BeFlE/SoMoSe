@@ -206,11 +206,30 @@ void SoMoSe_setLowPowerMode(int Adr, bool turnOn)
 	Wire.endTransmission();      		
     delay(25);
 }
-void SoMoSe_startMeassurment(int Adr, int Repetitions)
-{
-	Wire.beginTransmission(byte(Adr)); 	
+void SoMoSe_startMeassurment(int Adr, uint8_t Repetitions)  	//a measurement must be triggered in low power mode. the data can be read at any time. If no measurement is triggered, old data is read!
+{								//the number of repetitions is a tradeoff between accuracy and energy consumption. A value of at least 100 is recommended
+	Wire.beginTransmission(byte(Adr)); 			//After starting the measurement, wait at least 250ms and check "SoMoSe_MeassurementFinished()" before reading the data
 	Wire.write('M');      		 
     	Wire.write(byte(Repetitions)); 
 	Wire.endTransmission();      		
+}
+bool SoMoSe_MeassurementFinished(uint8_t Adr)
+{
+  Wire.beginTransmission(byte(Adr));  
+  Wire.write('o');         
+  if(Wire.endTransmission())         
+    {
+        return 0;
+    }
+  delay(1);                   // maybe some delay is required
+  Wire.requestFrom(byte(Adr), (byte) 1);     
+  if (1 <= Wire.available())    
+  { 
+      if(Wire.read() & 0x01)     
+        return 0;//meassuring
+      else 
+        return 1;//finished
+  }
+  return 0;
 }
 
