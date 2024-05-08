@@ -134,7 +134,7 @@ int SoMoSe_getReferenceWet(int Addr)
 
 // only for Somose versions > v3.4 (HW version)
 
-float SoMoSe_readHwVersion(uint8_t Addr)
+float SoMoSe_getHwVersion(uint8_t Addr)
 {
     Wire.beginTransmission(byte(Addr));
     Wire.write('h');
@@ -156,7 +156,7 @@ float SoMoSe_readHwVersion(uint8_t Addr)
     }
     return 0;
 }
-float SoMoSe_readFwVersion(uint8_t Addr)
+float SoMoSe_getFwVersion(uint8_t Addr)
 {
     Wire.beginTransmission(byte(Addr));
     Wire.write('f');
@@ -178,7 +178,7 @@ float SoMoSe_readFwVersion(uint8_t Addr)
     }
     return 0;
 }
-bool SoMoSe_readLowPowerMode(uint8_t Addr)
+bool SoMoSe_getLowPowerMode(uint8_t Addr)
 {
     Wire.beginTransmission(byte(Addr));
     Wire.write('o');
