@@ -4,7 +4,7 @@ void setupI2C()      //call once
 {
     Wire.begin();           // join i2c bus as master
 }
-int getAveragedSensorValue(int Adr)
+int SoMoSe_getAveragedSensorValue(int Adr)
 {
   int value;
   int dump;
@@ -35,7 +35,7 @@ void loop() {
   // Wait a few seconds between measurements.
   delay(2000);
 
-  int hum = getAveragedSensorValue(0x55);
+  int hum = SoMoSe_getAveragedSensorValue(0x55);
   
   Serial.print("averaged humidity = ");
   Serial.println(hum);
