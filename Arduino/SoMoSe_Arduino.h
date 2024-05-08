@@ -6,19 +6,19 @@
 #endif
 
 void setupI2C();
-void setNewI2CAdr(int oldAdr, int newAdr);
-void setReferenceDry(int Adr,int newValue);
-void setReferenceWet(int Adr,int newValue);
-int getAveragedSensorValue(int Adr);
-int getSensorValue(int Adr);
-char getTemperatureValue(int Adr);
-int getReferenceDry(int Adr);
-int getReferenceWet(int Adr);
+void SoMoSe_setNewI2CAddr(int oldAddr, int newAddr);
+void SoMoSe_setReferenceDry(int Addr, int newValue);
+void SoMoSe_setReferenceWet(int Addr, int newValue);
+int SoMoSe_getAveragedSensorValue(int Addr);
+int SoMoSe_getSensorValue(int Addr);
+char SoMoSe_getTemperatureValue(int Addr);
+int SoMoSe_getReferenceDry(int Addr);
+int SoMoSe_getReferenceWet(int Addr);
 
 //only for Somose versions > v3.4 (HW version)
-float SoMoSe_readHwVersion(uint8_t Adr);
-float SoMoSe_readFwVersion(uint8_t Adr);
-bool SoMoSe_readLowPowerMode(uint8_t Adr);
-void SoMoSe_setLowPowerMode(int Adr, bool turnOn);
-void SoMoSe_startMeassurment(int Adr, uint8_t Repetitions = 100);
-bool SoMoSe_MeassurementFinished(uint8_t Adr);
+float SoMoSe_getHwVersion(uint8_t Addr);
+float SoMoSe_getFwVersion(uint8_t Addr);
+bool SoMoSe_getLowPowerMode(uint8_t Addr);
+void SoMoSe_setLowPowerMode(int Addr, bool turnOn);
+void SoMoSe_startMeasurement(int Addr, uint8_t Repetitions = 100);
+bool SoMoSe_isMeasurementFinished(uint8_t Addr);
