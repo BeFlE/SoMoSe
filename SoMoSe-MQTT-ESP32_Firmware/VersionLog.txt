@@ -8,6 +8,8 @@ ESP32- Firmware:
       Version 0.18: -added low-power- mode
                     -changed MQTT-QoS (QoS0 -> QoS1)
 
+      Version 0.19: -Improved stability of the MQTT-connection
+
 SoMoSe v3- Firmware:
 
       Version 1.3:  -Release
