@@ -10,6 +10,9 @@ ESP32- Firmware:
 
       Version 0.19: -Improved stability of the MQTT-connection
 
+      Version 0.20: -Improved stability of the MQTT-connection especially on ESP32-C3
+                    -Bugfixes    
+
 SoMoSe v3- Firmware:
 
       Version 1.3:  -Release
@@ -19,7 +22,6 @@ SoMoSe v3- Firmware:
 
 
 Planned:  -Simple mechanism for direct watering via GPIO pins of the ESP
-          -Sleep mode to save energy, measurement and visualization of the battery voltage and the solar panel voltage, if connected
           -Translation into different languages
           -show the current version installed and available version on the update server
 
