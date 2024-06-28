@@ -13,6 +13,9 @@ ESP32- Firmware:
       Version 0.20: -Improved stability of the MQTT-connection especially on ESP32-C3
                     -Bugfixes    
 
+      Version 0.21: -Further improvement of stability and the MQTT-connection
+                    -Optimizations to save energy in battery mode
+
 SoMoSe v3- Firmware:
 
       Version 1.3:  -Release
