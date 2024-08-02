@@ -16,11 +16,15 @@ ESP32- Firmware:
       Version 0.21: -Further improvement of stability and the MQTT-connection
                     -Optimizations to save energy in battery mode
 
+      Version 0.22: -Added prompt for recalibration when updating to SoMoSe v1.5
+
 SoMoSe v3- Firmware:
 
       Version 1.3:  -Release
 
       Version 1.4:  -Current consumption in LowPower mode improved (800uA(v1.3) -> 16uA(v1.4) in standby)
+
+      Version 1.5: -Improvement of the measurement and increase of the measuring frequency to approx. 50KHz. recalibration of the wet reference value to approx. 1400 necessary! 
 
 
 
