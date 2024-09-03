@@ -52,6 +52,25 @@ int SoMoSe_getAveragedSensorValue(int Addr)
     return value;
 }
 
+int SoMoSe_getRawSensorValue(int Addr)
+{
+    int value;
+
+    Wire.beginTransmission(byte(Addr)); // transmit to device
+    Wire.write('r');          // command read value
+    Wire.endTransmission();          // stop transmitting
+
+    delay(1);                   // maybe some delay is required
+
+    Wire.requestFrom(byte(Addr), (byte)2);    // request 2 bytes from slave device
+    if (2 <= Wire.available())         // if two bytes were received
+    {
+        value = Wire.read() << 8;
+        value += Wire.read();
+    }
+    return value;
+}
+
 int SoMoSe_getSensorValue(int Addr)
 {
     int value;
