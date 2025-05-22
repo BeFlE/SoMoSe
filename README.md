@@ -32,7 +32,7 @@ sensor:
       name: "Temperature"
     moisture:
       name: "Moisture"
-    energy_mode: "contious" //"energy_saving" --- optinal, default: continous
+    energy_mode: "continous" //"energy_saving" --- optinal, default: continous
     moisture_data: "average" //"last","raw" --- optional, default: average
     ref_dry: 40  //optional
     ref_wet: 8000 //optional
