@@ -21,7 +21,7 @@ i2c:
 
 sensor: 
   - platform: somose
-    address: 0x55 //can be changed, sensor changs address automaticly if he is on default address(0x55), make sure that there are never two sensors with the same address on the bus at the same time
+    address: 0x55 //can be changed, sensor changes address automaticly if he is on default address(0x55), make sure that there are never two sensors with the same address on the bus at the same time
     temperature:
       name: "Temperature"
     moisture:
