@@ -1,6 +1,6 @@
 # ESPHome Integration
 
-PLEASE USE WITH CARE!
+Everything works with one sensor, please proceed with caution if several sensors are connected to the same bus
 
 I am very grateful for reports of any problems or bugs.
 
