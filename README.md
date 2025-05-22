@@ -1,3 +1,8 @@
+# Datasheets
+
+[Datasheet SoMoSe v2.2](https://befle.de/Datasheets/SoMoSe_v3_4/Datenblatt_SoMoSe_v2.2.pdf)
+[Datasheet SoMoSe v3.4](https://befle.de/Datasheets/SoMoSe_v3_4/Datenblatt_SoMoSe_v3.4.pdf)
+
 # ESPHome Integration
 
 Everything works with one sensor, please proceed with caution if several sensors are connected to the same bus
@@ -11,7 +16,7 @@ I am very grateful for reports of any problems or bugs.
 external_components: 
   - source:
       type: git
-      url: https://github.com/BeFlE/SoMoSe/tree/main/ESPHome
+      url: https://github.com/BeFlE/SoMoSe
       ref: main
 
 i2c:
