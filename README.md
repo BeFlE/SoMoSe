@@ -38,6 +38,7 @@ sensor:
     ref_dry: 40  #optional
     ref_wet: 8000 #optional
     factory_reset: true #optional, resets sensor at "address" to factory-state (incl. I2C-address)
+    update_interval: 30s #optional
 
 #multiple sensors on the same I2C-Bus, make sure that only one sensor is connected at a time during initial start-up (all sensors at default address 0x55),
 #then the ESP is reset manually (so that the address is changed correctly) and then the next sensor is installed (then reset again)
