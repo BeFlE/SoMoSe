@@ -43,11 +43,11 @@ sensor:
 #multiple sensors on the same I2C-Bus, make sure that only one sensor is connected at a time during initial start-up (all sensors at default address 0x55),
 #then the ESP is reset manually (so that the address is changed correctly) and then the next sensor is installed (then reset again)
   - platform: somose
-    address: 0x55
+    address: 0x50
     temperature:
-      name: "Temperature 0x55"
+      name: "Temperature 0x50"
     moisture:
-      name: "Moisture 0x55"
+      name: "Moisture 0x50"
     energy_mode: "energy_saving"
     moisture_data: "raw"
     ref_dry: 40
