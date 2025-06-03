@@ -112,9 +112,9 @@ void SOMOSE::publishValues(){
   float moisture;
   float temperature = get_temperature_value_signed_() * 1.0f;
   if(this->Moisture_Data_ == average)
-    moisture = static_cast<float>(get_averaged_sensor_value_());
+    moisture = static_cast<float>(get_averaged_sensor_value_()/2.55);
   else if(this->Moisture_Data_ == last)
-    moisture = static_cast<float>(get_sensor_value());
+    moisture = static_cast<float>(get_sensor_value()/2.55);
   else if(this->Moisture_Data_ == raw)
     moisture = static_cast<float>(get_raw_sensor_value());
 
