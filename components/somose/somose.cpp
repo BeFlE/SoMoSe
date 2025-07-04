@@ -66,7 +66,7 @@ void SOMOSE::update() {
   {
     uint8_t cntr = 0;
     start_measurement(100);
-    App.scheduler.set_timeout(this, "somose_measurement_done", 400, [this]() {
+    App.scheduler.set_timeout(this, "somose_measurement_done", 300, [this]() {
       this->handle_measurement_result_();
     });
     this->status_clear_warning();
