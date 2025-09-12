@@ -23,6 +23,7 @@ MoistureData = somose_ns.enum("Moisture_Data_t")
 ENERGY_MODEs = {
     "CONTINOUS": EnergyMode.continous,
     "ENERGY_SAVING": EnergyMode.energy_saving,
+    "HIBERNATE": EnergyMode.hibernate,
 }
 
 MOISTURE_DATAs = {
@@ -37,12 +38,20 @@ CONF_REF_DRY = "ref_dry"
 CONF_REF_WET = "ref_wet"
 CONF_FACTORY_RESET = "factory_reset"
 
+# Neue Validierungsfunktion, die die Einheit für den Feuchtigkeitssensor anpasst
 def validate_moisture_unit_conditional(config):
+    # Überprüfen, ob ein Feuchtigkeitssensor in der Konfiguration definiert ist
     if CONF_MOISTURE in config:
+        # Den konfigurierten Feuchtigkeitsdatenmodus abrufen (z.B. "LAST", "AVERAGE", "RAW")
         moisture_data_mode = config[CONF_MOISTURE_DATA]
+
+        # Auf das Konfigurationswörterbuch des Feuchtigkeitssensors zugreifen
         moisture_sensor_config = config[CONF_MOISTURE]
+
+        # Wenn der Feuchtigkeitsdatenmodus "RAW" ist, die Maßeinheit auf einen leeren String (einheitenlos) setzen
         if moisture_data_mode == "RAW":
             moisture_sensor_config['unit_of_measurement'] = ""
+        # Andernfalls (für "LAST" oder "AVERAGE") sicherstellen, dass sie auf UNIT_PERCENT gesetzt ist
         else:
             moisture_sensor_config['unit_of_measurement'] = UNIT_PERCENT
     return config
@@ -58,7 +67,7 @@ CONFIG_SCHEMA = cv.All(
                 state_class=STATE_CLASS_MEASUREMENT,
             ),
             cv.Optional(CONF_MOISTURE): sensor.sensor_schema(
-                unit_of_measurement=UNIT_PERCENT,  
+                unit_of_measurement=UNIT_PERCENT,  # Standardwert, wird evtl. überschrieben
                 accuracy_decimals=0,
                 icon=ICON_WATER_PERCENT,
                 device_class=DEVICE_CLASS_MOISTURE,
@@ -77,7 +86,7 @@ CONFIG_SCHEMA = cv.All(
     )
     .extend(cv.polling_component_schema("20s"))
     .extend(i2c.i2c_device_schema(default_address=0x55)),
-    validate_moisture_unit_conditional  
+    validate_moisture_unit_conditional  # Hier statt .add_extra_validator()
 )
 
 

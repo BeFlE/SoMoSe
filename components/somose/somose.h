@@ -9,7 +9,8 @@ namespace somose {
 
 enum EnergyMode_t {
   continous = 0,
-  energy_saving = 1
+  energy_saving = 1,
+  hibernate = 2
 };
 
 enum Moisture_Data_t{
@@ -46,8 +47,8 @@ class SOMOSE : public PollingComponent, public i2c::I2CDevice {
   uint16_t get_reference_wet_value_();
   float get_hw_version_();
   float get_fw_version_();
-  bool get_low_power_mode_();
-  bool set_low_power_mode(bool turn_on);
+  uint8_t get_low_power_mode_();
+  bool set_low_power_mode(uint8_t mode);
   bool factory_reset();
   bool start_measurement(uint8_t repetitions = 100);
   bool is_measurement_finished_();

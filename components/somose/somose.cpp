@@ -16,6 +16,13 @@ void SOMOSE::setup() {
   ESP_LOGCONFIG(TAG, "Setting up SOMOSE...");
 
   uint8_t addBuff = this->address_;
+
+  if(this-> EnergyMode_ == hibernate)
+  {
+    uint8_t dump;
+    this->read(&dump, 1);
+    delay(25);
+  }
   ESP_LOGD(TAG, "SoMoSe - Addr = 0x%02X", addBuff);
   if(addBuff != 0x55){
     if(get_hw_version_() == 0.0f){
@@ -50,10 +57,14 @@ void SOMOSE::setup() {
   if(get_reference_wet_value_() != this->ref_wet_)
     set_reference_wet(this->ref_wet_);
 
-  if(get_hw_version_() < 3.0)
+  float hw_version_ = get_hw_version_();
+
+  if(hw_version_ < 3.0)
     this-> EnergyMode_ = continous;
+  if(hw_version_ < 4.0 && this-> EnergyMode_ == hibernate)
+    this-> EnergyMode_ = energy_saving;
   if(this->EnergyMode_ != (EnergyMode_t)get_low_power_mode_())
-    set_low_power_mode((bool)this->EnergyMode_);
+    set_low_power_mode(this->EnergyMode_);
 }
 
 void SOMOSE::update() {
@@ -62,11 +73,19 @@ void SOMOSE::update() {
   ESP_LOGD(TAG, "SOMOSE::update");
   
 
-  if(this->EnergyMode_ == energy_saving)
+  if(this->EnergyMode_ != continous)
   {
+    uint16_t callbackDelay = 300;
+    if(this->EnergyMode_ == hibernate)
+    {
+      uint8_t dump;
+      this->read(&dump, 1);
+      delay(25);
+      callbackDelay = 150;
+    }
     uint8_t cntr = 0;
     start_measurement(100);
-    App.scheduler.set_timeout(this, "somose_measurement_done", 300, [this]() {
+    App.scheduler.set_timeout(this, "somose_measurement_done", callbackDelay, [this]() {
       this->handle_measurement_result_();
     });
     this->status_clear_warning();
@@ -363,7 +382,7 @@ float SOMOSE::get_fw_version_() {
   return version;
 }
 
-bool SOMOSE::get_low_power_mode_() {
+uint8_t SOMOSE::get_low_power_mode_() {
   uint8_t command = 0x6F;
   uint8_t status = 0;
 
@@ -377,19 +396,21 @@ bool SOMOSE::get_low_power_mode_() {
     return false;
   }
   ESP_LOGD(TAG, "Status: %u", status);
-  bool low_power = 0;
-  if (status & 0x02)
+  uint8_t low_power = 0;
+  if (status & 0x06)
+    low_power = 2;
+  else if (status & 0x02)
     low_power = 1;
   else
     low_power = 0;
-  ESP_LOGD(TAG, "Low power mode is: %s", low_power ? "on" : "off");
+  ESP_LOGD(TAG, "Low power mode is: %u", low_power);
   return low_power;
 }
 
-bool SOMOSE::set_low_power_mode(bool turn_on) {
-  ESP_LOGD(TAG, "Setting low power mode to: %s", turn_on ? "on" : "off");
+bool SOMOSE::set_low_power_mode(uint8_t mode) {
+  ESP_LOGD(TAG, "Setting low power mode to: %u",mode);
   uint8_t command = 'L';
-  uint8_t value = turn_on ? 1 : 0;
+  uint8_t value = mode;
   uint8_t buf[2];
   ESP_LOGD(TAG, "Setting low power mode to: %u", value);
   buf[0] = command;
