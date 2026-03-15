@@ -4,6 +4,8 @@
 
 [Datasheet SoMoSe v3.4](https://befle.de/Datasheets/SoMoSe_v3_4/Datenblatt_SoMoSe_v3.4.pdf)
 
+[Datasheet SoMoSe v4.2](https://befle.de/Datasheets/SoMoSe_v3_4/Datenblatt_SoMoSe_v4.2.pdf)
+
 # ESPHome Integration
 
 Everything works with one sensor, please proceed with caution if several sensors are connected to the same bus
